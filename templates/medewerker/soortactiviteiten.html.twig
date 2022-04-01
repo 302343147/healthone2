@@ -1,0 +1,51 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li class="active"><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
+    <li><a href="{{ path('beheer') }}"><span class="badge">{{ activiteiten|length }}</span>beheer</a></li>
+    <li><a href="{{ path('soortactiviteitenoverzicht') }}"><span class="badge">{{ soortactiviteiten|length }}</span>Soortactiviteit</a></li>
+{% endblock %}
+{% block content %}
+    <section >
+        <table class="table" style="table-layout: fixed">
+            <caption>Dit zijn alle activiteiten van het kartcentrum</caption>
+            <thead>
+            <tr>
+                <td>datum</td>
+                <td>tijd</td>
+                <td>soort activiteit</td>
+                <td>deelnemers</td>
+                <td>actie</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for activiteit in activiteiten %}
+                <tr>
+                    <td>
+                        {{ activiteit.datum|date("d-m-Y")}}
+                    </td>
+                    <td>
+                        {{ activiteit.tijd|date("H:i")}}
+                    </td>
+
+                    <td>
+                        {{ activiteit.soort.naam}}
+                    </td>
+                    <td>
+                        {{ activiteit.users|length}}
+                    </td>
+                    <td title="deelnemers aan deze activiteit">
+
+                        <a href="{{ path('details', {'id':activiteit.id}) }}" >
+                            <span class="glyphicon glyphicon-search" style="color:red"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+        <br />
+    </section>
+
+{% endblock %}
