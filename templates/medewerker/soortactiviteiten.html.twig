@@ -6,38 +6,51 @@
     <li><a href="{{ path('soortactiviteitenoverzicht') }}"><span class="badge">{{ soortactiviteiten|length }}</span>Soortactiviteit</a></li>
 {% endblock %}
 {% block content %}
-    <section >
+    <section>
+        <div class="text-center m-2">
+            <a href="{{ path('nieuwSoortActiviteit') }}" class="btn btn-outline-success">
+                Soort Activiteit Toevoegen<span  class="fa fa-plus-circle" ></span>
+            </a>
+        </div>
         <table class="table" style="table-layout: fixed">
             <caption>Dit zijn alle activiteiten van het kartcentrum</caption>
             <thead>
             <tr>
-                <td>datum</td>
-                <td>tijd</td>
-                <td>soort activiteit</td>
-                <td>deelnemers</td>
-                <td>actie</td>
+                <td>Naam</td>
+                <td>Min. Leeftijd</td>
+                <td>Tijdsduur</td>
+                <td>Prijs</td>
+                <td>Beschrijving</td>
             </tr>
             </thead>
             <tbody>
-            {% for activiteit in activiteiten %}
+            {% for activiteit in soortactiviteiten %}
                 <tr>
                     <td>
-                        {{ activiteit.datum|date("d-m-Y")}}
+                        {{ activiteit.naam}}
                     </td>
                     <td>
-                        {{ activiteit.tijd|date("H:i")}}
-                    </td>
-
-                    <td>
-                        {{ activiteit.soort.naam}}
+                        {{ activiteit.minLeeftijd}}
                     </td>
                     <td>
-                        {{ activiteit.users|length}}
+                        {{ activiteit.tijdsduur}}
+                    </td>
+                    <td>
+                        {{ activiteit.prijs}}
+                    </td>
+                    <td>
+                        {{ activiteit.beschrijving}}
                     </td>
                     <td title="deelnemers aan deze activiteit">
 
                         <a href="{{ path('details', {'id':activiteit.id}) }}" >
                             <span class="glyphicon glyphicon-search" style="color:red"></span>
+                        </a>
+                        <a href="{{ path('updatesoort', {'id':activiteit.id}) }}" >
+                            <span class="glyphicon glyphicon-edit" style="color:red"></span>
+                        </a>
+                        <a href="{{ path('deletesoort', {'id':activiteit.id}) }}" >
+                            <span class="glyphicon glyphicon-trash" style="color:red"></span>
                         </a>
                     </td>
                 </tr>

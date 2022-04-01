@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4925ba3f-4778-4576-9410-6a8c4ecc0e0d" name="Default Changelist" comment="" />
+    <list default="true" id="4925ba3f-4778-4576-9410-6a8c4ecc0e0d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/medewerker/soortactiviteiten.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MedewerkerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MedewerkerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medewerker/activiteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medewerker/activiteiten.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -125,18 +146,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../healthone" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/medewerker" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\karting4\templates\medewerker" />
+      <recent name="C:\xampp\htdocs\karting4\templates" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\public" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\translations" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\src" />
-      <recent name="C:\Users\femke\PhpstormProjects\kartingV4\src\Repository" />
-      <recent name="C:\Users\femke\PhpstormProjects\kartingV4\src\Entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\templates" />
@@ -151,6 +172,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615884971491</updated>
       <workItem from="1615884972633" duration="6265000" />
+      <workItem from="1648804726332" duration="6623000" />
     </task>
     <servers />
   </component>

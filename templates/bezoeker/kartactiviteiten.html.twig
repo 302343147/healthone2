@@ -11,7 +11,7 @@
             <h3>Er zijn {{ soortactiviteiten|length }} soorten activiteiten </h3>
             <ul class="list-group">
                 {% for activiteit in soortactiviteiten %}
-                <li class="list-group-item text-primary">{{ activiteit.naam }}</li>
+                <li class="list-group-item text-primary">{{ activiteit.naam }} | Min. Leeftijd: {{ activiteit.minLeeftijd }} | Prijs: {{ activiteit.prijs }} | Tijdsduur: {{ activiteit.tijdsduur }} | Beschrijving: {{ activiteit.beschrijving }}</li>
                 {% endfor %}
             </ul>
             <p>

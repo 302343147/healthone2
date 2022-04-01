@@ -56,6 +56,11 @@ class Soortactiviteit
 
     private $activiteiten;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $beschrijving;
+
     public function __construct()
     {
         $this->activiteiten=new ArrayCollection();
@@ -165,6 +170,18 @@ class Soortactiviteit
     public function getPrijs()
     {
         return $this->prijs;
+    }
+
+    public function getBeschrijving(): ?string
+    {
+        return $this->beschrijving;
+    }
+
+    public function setBeschrijving(string $beschrijving): self
+    {
+        $this->beschrijving = $beschrijving;
+
+        return $this;
     }
 }
 

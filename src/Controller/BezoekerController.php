@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Activiteit;
 use App\Entity\Soortactiviteit;
 use App\Entity\User;
 use App\Form\ActiviteitType;
+use App\Form\SoortActiviteitType;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -100,7 +102,8 @@ class BezoekerController extends AbstractController
         $soortAct = new SoortActiviteit();
         $soortAct->setNaam('Geef een naam op!');
 
-        $form = $this->createForm(ActiviteitType::class,$soortAct);
+        $form = $this->createForm(SoortActiviteitType::class,$soortAct);
+        $form->add('save', SubmitType::class, array('label'=>"Toevoegen"));
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
@@ -108,8 +111,8 @@ class BezoekerController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($soortAct);
             $em->flush();
-            return $this->redirectToRoute('kartactiviteiten');
+            return $this->redirectToRoute('soortactiviteitenoverzicht');
         }
-        return $this->render('admin/nieuwSA.html.twig',array('boodschap'=>'Voeg een nieuwe Activiteit toe','form'=>$form->createView(),));
+        return $this->render('medewerker/nieuwSA.html.twig',array('boodschap'=>'Voeg een nieuwe Activiteit toe','form'=>$form->createView(),));
     }
 }
