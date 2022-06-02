@@ -4,8 +4,11 @@ namespace App\Controller;
 
 
 use App\Entity\Activiteit;
+use App\Entity\Soortactiviteit;
+use App\Entity\User;
 use App\Form\ActiviteitType;
 use App\Form\SoortActiviteitType;
+use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\ResetType;
@@ -21,15 +24,19 @@ class MedewerkerController extends AbstractController
     {
 
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
 
         $soortactiviteiten=$this->getDoctrine()
-            ->getRepository('App:Soortactiviteit')
+            ->getRepository(Soortactiviteit::class)
+            ->findAll();
+
+        $deelnemers=$this->getDoctrine()
+            ->getRepository(User::class)
             ->findAll();
 
         return $this->render('medewerker/activiteiten.html.twig', [
-            'activiteiten'=>$activiteiten, 'soortactiviteiten' => $soortactiviteiten
+            'activiteiten'=>$activiteiten, 'soortactiviteiten' => $soortactiviteiten, 'deelnemers' => $deelnemers
         ]);
     }
 
@@ -40,11 +47,11 @@ class MedewerkerController extends AbstractController
     {
 
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
 
         $soortactiviteiten=$this->getDoctrine()
-            ->getRepository('App:Soortactiviteit')
+            ->getRepository(Soortactiviteit::class)
             ->findAll();
 
         return $this->render('medewerker/soortactiviteiten.html.twig', [
@@ -59,14 +66,14 @@ class MedewerkerController extends AbstractController
     public function detailsAction($id)
     {
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
         $activiteit=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->find($id);
 
         $deelnemers=$this->getDoctrine()
-            ->getRepository('App:User')
+            ->getRepository(User::class)
             ->getDeelnemers($id);
 
 
@@ -83,11 +90,25 @@ class MedewerkerController extends AbstractController
     public function beheerAction()
     {
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
 
         return $this->render('medewerker/beheer.html.twig', [
             'activiteiten'=>$activiteiten
+        ]);
+    }
+
+    /**
+     * @Route("/admin/deelnemers", name="deelnemers")
+     */
+    public function deelnemersAction()
+    {
+        $users=$this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+
+        return $this->render('medewerker/deelnemers.html.twig', [
+            'users'=>$users
         ]);
     }
 
@@ -118,10 +139,43 @@ class MedewerkerController extends AbstractController
             return $this->redirectToRoute('beheer');
         }
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
         return $this->render('medewerker/nieuwSA.html.twig',array('form'=>$form->createView(),'naam'=>'toevoegen','aantal'=>count($activiteiten)
             ));
+    }
+
+    /**
+     * @Route("/admin/adduser", name="addUser")
+     */
+    public function addUser(Request $request)
+    {
+        // create a user and a contact
+        $a=new User();
+
+        $form = $this->createForm(UserType::class, $a);
+        $form->add('save', SubmitType::class, array('label'=>"voeg toe"));
+        //$form->add('reset', ResetType::class, array('label'=>"reset"));
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($a);
+            $em->flush();
+
+            $this->addFlash(
+                'notice',
+                'deelnemer toegevoegd!'
+            );
+            return $this->redirectToRoute('deelnemers');
+        }
+        $users=$this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+        return $this->render('medewerker/nieuwD.html.twig',array('form'=>$form->createView(),'naam'=>'toevoegen','aantal'=>count($users)
+        ));
     }
 
     /**
@@ -130,7 +184,7 @@ class MedewerkerController extends AbstractController
     public function updateAction($id,Request $request)
     {
         $a=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->find($id);
 
         $form = $this->createForm(ActiviteitType::class, $a);
@@ -155,10 +209,47 @@ class MedewerkerController extends AbstractController
         }
 
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Activiteit')
+            ->getRepository(Activiteit::class)
             ->findAll();
 
-        return $this->render('medewerker/nieuwSA.html.twig',array('form'=>$form->createView(),'naam'=>'aanpassen','aantal'=>count($activiteiten)));
+        return $this->render('medewerker/nieuwA.html.twig',array('form'=>$form->createView(),'naam'=>'aanpassen','aantal'=>count($activiteiten)));
+    }
+
+    /**
+     * @Route("/admin/updateuser/{id}", name="updateUser")
+     */
+    public function updateUserAction($id,Request $request)
+    {
+        $a=$this->getDoctrine()
+            ->getRepository(User::class)
+            ->find($id);
+
+        $form = $this->createForm(UserType::class, $a);
+        $form->add('save', SubmitType::class, array('label'=>"aanpassen"));
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            // tells Doctrine you want to (eventually) save the contact (no queries yet)
+            $em->persist($a);
+
+
+            // actually executes the queries (i.e. the INSERT query)
+            $em->flush();
+            $this->addFlash(
+                'notice',
+                'deelnemer aangepast!'
+            );
+            return $this->redirectToRoute('deelnemers');
+        }
+
+        $users=$this->getDoctrine()
+            ->getRepository(User::class)
+            ->findAll();
+
+        return $this->render('medewerker/nieuwD.html.twig',array('form'=>$form->createView(),'naam'=>'aanpassen','aantal'=>count($users)));
     }
 
 
@@ -168,7 +259,7 @@ class MedewerkerController extends AbstractController
     public function updateSoortAction($id,Request $request)
     {
         $a=$this->getDoctrine()
-            ->getRepository('App:Soortactiviteit')
+            ->getRepository(Soortactiviteit::class)
             ->find($id);
 
         $form = $this->createForm(SoortActiviteitType::class, $a);
@@ -193,7 +284,7 @@ class MedewerkerController extends AbstractController
         }
 
         $activiteiten=$this->getDoctrine()
-            ->getRepository('App:Soortactiviteit')
+            ->getRepository(Soortactiviteit::class)
             ->findAll();
 
         return $this->render('medewerker/nieuwSA.html.twig',array('form'=>$form->createView(),'naam'=>'aanpassen','aantal'=>count($activiteiten)));
@@ -207,7 +298,7 @@ class MedewerkerController extends AbstractController
     {
         $em=$this->getDoctrine()->getManager();
         $a= $this->getDoctrine()
-            ->getRepository('App:Activiteit')->find($id);
+            ->getRepository(Activiteit::class)->find($id);
         $em->remove($a);
         $em->flush();
 
@@ -220,13 +311,32 @@ class MedewerkerController extends AbstractController
     }
 
     /**
+     * @Route("/admin/deleteuser/{id}", name="deleteUser")
+     */
+    public function deleteUserAction($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $a= $this->getDoctrine()
+            ->getRepository(User::class)->find($id);
+        $em->remove($a);
+        $em->flush();
+
+        $this->addFlash(
+            'notice',
+            'deelnemer verwijderd!'
+        );
+        return $this->redirectToRoute('deelnemers');
+
+    }
+
+    /**
      * @Route("/admin/deletesoort/{id}", name="deletesoort")
      */
     public function deleteSoortAction($id)
     {
         $em=$this->getDoctrine()->getManager();
         $a= $this->getDoctrine()
-            ->getRepository('App:Soortactiviteit')->find($id);
+            ->getRepository(Soortactiviteit::class)->find($id);
         $em->remove($a);
         $em->flush();
 

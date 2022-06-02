@@ -4,6 +4,7 @@
     <li class="active"><a href="{{ path('activiteitenoverzicht') }}">home</a></li>
     <li><a href="{{ path('beheer') }}"><span class="badge">{{ activiteiten|length }}</span>beheer</a></li>
     <li><a href="{{ path('soortactiviteitenoverzicht') }}"><span class="badge">{{ soortactiviteiten|length }}</span>Soortactiviteit</a></li>
+    <li><a href="{{ path('deelnemers') }}"><span class="badge">{{ deelnemers|length }}</span>Deelnemers</a></li>
 {% endblock %}
 {% block content %}
     <section>

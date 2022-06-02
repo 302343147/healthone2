@@ -42,6 +42,14 @@ class Activiteit
     private $tijd;
 
     /**
+
+     * @ORM\Column(name="maxdeelnemers", type="integer")
+     * @Assert\NotBlank(message="vul een max in")
+     *
+     */
+    private $maxdeelnemers;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Soortactiviteit", inversedBy="activiteiten")
      * @ORM\JoinColumn(name="soort_id",referencedColumnName="id")
      *
@@ -133,6 +141,16 @@ class Activiteit
     public function setSoort($soort)
     {
         $this->soort=$soort;
+    }
+
+    public function getMaxdeelnemers()
+    {
+        return $this->maxdeelnemers;
+    }
+
+    public function setMaxdeelnemers($maxdeelnemers)
+    {
+        $this->maxdeelnemers=$maxdeelnemers;
     }
 }
 

@@ -1,0 +1,67 @@
+{% extends 'medewerker.html.twig' %}
+
+{% block menu %}
+    <li><a href="{{ path('activiteiten') }}">home</a></li>
+    <li><a href="{{ path('profiel') }}">profiel</a></li>
+{% endblock %}
+{% block content %}
+    <section >
+        <table class="table" style="table-layout: fixed">
+            <caption>Dit zijn jouw gegevens.</caption>
+            <thead>
+            <tr>
+                <td>Username</td>
+                <td>E-mail</td>
+                <td>Voorletters</td>
+                <td>Achternaam</td>
+                <td>Adres</td>
+                <td>Postcode</td>
+                <td>Woonplaats</td>
+                <td>Telefoon</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                {% if user.id == app.user.id %}
+                <tr>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {{ user.voorletters }}
+                    </td>
+                    <td>
+                        {{ user.achternaam }}
+                    </td>
+                    <td>
+                        {{ user.adres }}
+                    </td>
+                    <td>
+                        {{ user.postcode }}
+                    </td>
+                    <td>
+                        {{ user.woonplaats }}
+                    </td>
+                    <td>
+                        {{ user.telefoon }}
+                    </td>
+                    <td title="bewerk de gegevens van deze deelnemer">
+                        <a href="{{ path('updateProfile', {'id':user.id}) }}" >
+                            <span class="glyphicon glyphicon-pencil" style="color:red"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+
+    </section>
+
+{% endblock %}

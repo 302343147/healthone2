@@ -1,0 +1,21 @@
+{% extends 'medewerker.html.twig' %}
+
+
+{% block content %}
+    <div class="col-sm-6 col-form-label">
+        <h1>Deelnemer Updaten</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.plainPassword) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.voorletters) }}
+        {{ form_row(form.tussenvoegsel) }}
+        {{ form_row(form.achternaam) }}
+        {{ form_row(form.adres) }}
+        {{ form_row(form.postcode) }}
+        {{ form_row(form.woonplaats) }}
+        {{ form_row(form.telefoon) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
