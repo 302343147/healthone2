@@ -8,6 +8,9 @@
 {% block content %}
     <section >
         <article>
+            {% if is_granted('ROLE_ADMIN') %}
+
+            {% endif %}
             <h3>Er zijn {{ soortactiviteiten|length }} soorten activiteiten </h3>
             <ul class="list-group">
                 {% for activiteit in soortactiviteiten %}

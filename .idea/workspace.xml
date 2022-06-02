@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4925ba3f-4778-4576-9410-6a8c4ecc0e0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/medewerker/soortactiviteiten.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/deelnemer/profiel.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/medewerker/deelnemers.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/medewerker/nieuwA.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kartingV4.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kartingV4.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/BezoekerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BezoekerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DeelnemerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DeelnemerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/MedewerkerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MedewerkerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Soortactiviteit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Activiteit.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Activiteit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ActiviteitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ActiviteitType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bezoeker/kartactiviteiten.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/deelnemer/activiteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/deelnemer/activiteiten.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/medewerker/activiteiten.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medewerker/activiteiten.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/medewerker/beheer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/medewerker/beheer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +143,8 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/common" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
     </include_path>
   </component>
   <component name="ProjectId" id="1ppfUyvoSW28yBWwqaBJieWinKl" />
@@ -153,13 +163,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\healthone2\templates\medewerker" />
       <recent name="C:\xampp\htdocs\karting4\templates\medewerker" />
       <recent name="C:\xampp\htdocs\karting4\templates" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\public" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\translations" />
-      <recent name="C:\Users\femke\PhpstormProjects\kartingV4\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\healthone2\templates\deelnemer" />
       <recent name="C:\Users\femke\PhpstormProjects\kartingV4\templates" />
     </key>
   </component>
@@ -173,10 +184,22 @@
       <updated>1615884971491</updated>
       <workItem from="1615884972633" duration="6265000" />
       <workItem from="1648804726332" duration="6623000" />
+      <workItem from="1654177349599" duration="13268000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

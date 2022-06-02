@@ -1,0 +1,15 @@
+{% extends 'medewerker.html.twig' %}
+
+
+{% block content %}
+    <div class="col-sm-6 col-form-label">
+        <h1>Activiteit Udpdaten</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.datum) }}
+        {{ form_row(form.tijd) }}
+        {{ form_row(form.soort) }}
+        {{ form_row(form.maxdeelnemers) }}
+        {{ form_end(form) }}
+    </div>
+
+{% endblock %}
